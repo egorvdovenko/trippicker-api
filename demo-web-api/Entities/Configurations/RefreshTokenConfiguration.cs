@@ -1,8 +1,7 @@
-﻿using demo_web_api.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace demo_web_api.Configuration
+namespace demo_web_api.Entities.Configurations
 {
     public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshTokenEntity>
     {
@@ -10,7 +9,11 @@ namespace demo_web_api.Configuration
         {
             builder.ToTable("RefreshTokens");
             builder.HasKey(x => x.Token);
-            builder.HasOne(x => x.User).WithMany(x => x.RefreshTokens).HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Restrict);
+            builder
+                .HasOne(x => x.User)
+                .WithMany(x => x.RefreshTokens)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
