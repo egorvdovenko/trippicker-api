@@ -1,6 +1,7 @@
 using demo_web_api.Configuration;
 using demo_web_api.Entities;
-using demo_web_api.Interfaces;
+using demo_web_api.Interfaces.Repositories;
+using demo_web_api.Interfaces.Services;
 using demo_web_api.Repositories;
 using demo_web_api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -29,11 +30,11 @@ namespace demo_web_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<DemoDbContext>(c => c.UseSqlite("Data Source=demo-app.db"));
             services.AddDbContext<DemoDbContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("DemoDbContext")));
 
-            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<ITagService, TagService>();
+            services.AddScoped<IPlaceService, PlaceService>();
             services.AddScoped<IAccountService, AccountService>();
 
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
@@ -60,51 +61,6 @@ namespace demo_web_api
                 })
                 .AddEntityFrameworkStores<DemoDbContext>()
                 .AddDefaultTokenProviders();
-
-            //todo как быть на секции (ServiceCollectionExtensions)
-            //public static IServiceCollection ConfigureIdentity(this IServiceCollection services)
-            //{
-            //    services.AddIdentity<UserEntity, IdentityRole<int>>(opts =>
-            //        {
-            //            opts.Password.RequireNonAlphanumeric = false;
-            //            opts.Password.RequireUppercase = false;
-            //            opts.Password.RequireLowercase = false;
-            //            opts.Password.RequireDigit = false;
-            //            opts.Password.RequiredLength = 6;
-            //        })
-            //        .AddEntityFrameworkStores<InvestDbContext>()
-            //        .AddDefaultTokenProviders();
-
-            //    return services;
-            //}
-
-            //public static IServiceCollection ConfigureAuth(this IServiceCollection services, InvestConfiguration config)
-            //{
-            //    var key = Encoding.ASCII.GetBytes(config.SecurityKey);
-            //    var tokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(key),
-            //        ValidateIssuer = false,
-            //        ValidateAudience = false
-            //    };
-
-            //    services.AddSingleton(tokenValidationParameters);
-            //    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //        .AddJwtBearer(x =>
-            //        {
-            //            x.RequireHttpsMetadata = false;
-            //            x.SaveToken = true;
-            //            x.TokenValidationParameters = tokenValidationParameters;
-            //        })
-            //        .AddApiKey(c =>
-            //        {
-            //            c.ApiKey = config.ApiKey;
-            //            c.SystemUserEmail = config.SystemUserEmail;
-            //        });
-
-            //    return services;
-            //}
 
             services.AddSingleton(tokenValidationParameters);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -133,9 +89,7 @@ namespace demo_web_api
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

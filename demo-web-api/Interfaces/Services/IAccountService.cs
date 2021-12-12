@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using demo_web_api.Models.Responses;
 using System.Threading.Tasks;
 using demo_web_api.Entities;
 using demo_web_api.Models.Account;
 
-namespace demo_web_api.Interfaces
+namespace demo_web_api.Interfaces.Services
 {
     public interface IAccountService
     {

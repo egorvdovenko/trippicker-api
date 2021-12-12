@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using demo_web_api.Configuration;
 using demo_web_api.Entities;
 using demo_web_api.Enums;
-using demo_web_api.Interfaces;
+using demo_web_api.Interfaces.Repositories;
+using demo_web_api.Interfaces.Services;
 using demo_web_api.Models.Account;
-using demo_web_api.Models.Responses;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -40,7 +40,6 @@ namespace demo_web_api.Services
             _tokenValidationParameters = tokenValidationParameters;
             _refreshTokenRepository = refreshTokenRepository;
             _roleManager = roleManager;
-            
         }
 
         public async Task Register(RegistrationData data)
@@ -220,7 +219,6 @@ namespace demo_web_api.Services
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
             user.MiddleName = request.MiddleName;
-            user.PhoneNumber = request.PhoneNumber;
             await _userManager.UpdateAsync(user);
 
             var model = new UserModel(user);

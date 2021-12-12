@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using demo_web_api.Entities;
-using demo_web_api.Interfaces;
+using demo_web_api.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace demo_web_api.Repositories
