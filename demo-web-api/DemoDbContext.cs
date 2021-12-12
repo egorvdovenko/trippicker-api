@@ -15,7 +15,7 @@ namespace demo_web_api
 
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<PlaceEntity> Places { get; set; }
-        public DbSet<PlaceTagEntity> TagPlaces { get; set; }
+        public DbSet<PlaceTagEntity> PlaceTags { get; set; }
         public DbSet<RefreshTokenEntity> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

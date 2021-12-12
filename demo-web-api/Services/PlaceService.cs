@@ -57,6 +57,12 @@ namespace demo_web_api.Services
             {
                 Name = request.Name,
                 Description = request.Description,
+                PlaceTags = request.TagsIds
+                    .Select(tid => new PlaceTagEntity
+				    {
+                        TagId = tid
+				    })
+                    .ToList()
             };
 
             await _db.AddAsync(place);
@@ -68,10 +74,20 @@ namespace demo_web_api.Services
         public async Task Update(int id, SavePlaceRequest request)
         {
             var place = await _db.Places
+                .Include(p => p.PlaceTags)
                 .FirstAsync(p => p.Id == id);
+
+            _db.RemoveRange(place.PlaceTags);
 
             place.Name = request.Name;
             place.Description = request.Description;
+            place.PlaceTags = request.TagsIds
+                .Select(tid => new PlaceTagEntity
+                {
+                    PlaceId = id,
+                    TagId = tid
+                })
+                .ToList();
 
             _db.Update(place);
 

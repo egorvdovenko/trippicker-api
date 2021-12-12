@@ -7,6 +7,6 @@ namespace demo_web_api.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<PlaceTagEntity> PlaceTags { get; set; }
-    }
+		public List<PlaceTagEntity> PlaceTags { get; set; }
+	}
 }
