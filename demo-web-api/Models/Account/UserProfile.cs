@@ -11,15 +11,9 @@ namespace demo_web_api.Models.Account
         {
             Id = user.Id;
             Email = user.Email;
-            FirstName = user.FirstName;
-            LastName = user.LastName;
-            MiddleName = user.MiddleName;
         }
 
         public int Id { get; set; }
         public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string MiddleName { get; set; }
     }
 }

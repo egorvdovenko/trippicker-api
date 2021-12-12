@@ -53,9 +53,6 @@ namespace demo_web_api.Services
             {
                 Email = data.Email,
                 UserName = data.Email,
-                LastName = data.LastName,
-                MiddleName = data.MiddleName,
-                FirstName = data.FirstName,
                 Confirmed = isConfirmed,
             };
 
@@ -154,15 +151,6 @@ namespace demo_web_api.Services
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 
-            if(!string.IsNullOrWhiteSpace(user.FirstName))
-                claims.Add(new Claim(Claims.FirstName, user.FirstName));
-
-            if(!string.IsNullOrWhiteSpace(user.LastName))
-                claims.Add(new Claim(Claims.LastName, user.LastName));
-
-            if(!string.IsNullOrWhiteSpace(user.MiddleName))
-                claims.Add(new Claim(Claims.MiddleName, user.MiddleName));
-
             foreach (var role in roles)
             {
                 var r = await _roleManager.FindByNameAsync(role);
@@ -205,23 +193,6 @@ namespace demo_web_api.Services
             };
 
             return authResult;
-        }
-
-        public async Task<UserProfile> GetUserProfile(int userId)
-        {
-            var user = await _userManager.FindByIdAsync(userId.ToString());
-            return new UserProfile(user);
-        }
-
-        public async Task SaveUserProfile(int userId, SaveProfileRequest request)
-        {
-            var user = await _userManager.FindByIdAsync(userId.ToString());
-            user.FirstName = request.FirstName;
-            user.LastName = request.LastName;
-            user.MiddleName = request.MiddleName;
-            await _userManager.UpdateAsync(user);
-
-            var model = new UserModel(user);
         }
 
         public async Task Logout(int userId)

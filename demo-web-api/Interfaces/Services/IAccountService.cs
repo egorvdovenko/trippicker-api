@@ -11,8 +11,6 @@ namespace demo_web_api.Interfaces.Services
         Task Register(RegistrationData data);
         Task<AuthenticationResult> Login(LoginData data);
         Task<AuthenticationResult> RefreshToken(string token, Guid refreshToken);
-        Task<UserProfile> GetUserProfile(int userId);
-        Task SaveUserProfile(int userId, SaveProfileRequest request);
         Task Logout(int userId);
         Task<AuthenticationResult> CreateAuthenticationResult(UserEntity user, IList<string> roles);
     }
