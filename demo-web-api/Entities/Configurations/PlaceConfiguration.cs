@@ -10,7 +10,6 @@ namespace demo_web_api.Entities.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired();
             builder.Property(x => x.Description).IsRequired();
-            builder.HasMany<TagEntity>();
         }
     }
 }

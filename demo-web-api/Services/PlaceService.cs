@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using demo_web_api.Entities;
+using demo_web_api.Entities.ManyToMany;
 using demo_web_api.Extensions;
 using demo_web_api.Interfaces.Services;
 using demo_web_api.Models.Places;
@@ -22,10 +23,10 @@ namespace demo_web_api.Services
         {
             var places = await _db.Places
                 .AsNoTracking()
-                .Select(c => new PlaceItem
+                .Select(p => new PlaceItem
                 {
-                    Id = c.Id,
-                    Name = c.Name
+                    Id = p.Id,
+                    Name = p.Name
                 })
                 .ToPagedListAsync(pageFilter);
 
@@ -35,13 +36,17 @@ namespace demo_web_api.Services
         public async Task<PlaceModel> Get(int id)
         {
             var place = await _db.Places
-                .Select(c => new PlaceModel
+                .Select(p => new PlaceModel
                 {
-                    Id = c.Id,
-                    Name = c.Name,
-                    Description = c.Description
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    TagsIds = p.PlaceTags
+                        .Where(pt => pt.PlaceId == p.Id)
+                        .Select(pt => pt.TagId)
+                        .ToList()
                 })
-                .FirstAsync(c => c.Id == id);
+                .FirstAsync(p => p.Id == id);
 
             return place;
         }
@@ -51,7 +56,7 @@ namespace demo_web_api.Services
             var place = new PlaceEntity
             {
                 Name = request.Name,
-                Description = request.Description
+                Description = request.Description,
             };
 
             await _db.AddAsync(place);
@@ -63,7 +68,7 @@ namespace demo_web_api.Services
         public async Task Update(int id, SavePlaceRequest request)
         {
             var place = await _db.Places
-                .FirstAsync(c => c.Id == id);
+                .FirstAsync(p => p.Id == id);
 
             place.Name = request.Name;
             place.Description = request.Description;
@@ -76,7 +81,7 @@ namespace demo_web_api.Services
         public async Task Delete(int id)
         {
             var place = await _db.Places
-                .SingleAsync(x => x.Id == id);
+                .SingleAsync(p => p.Id == id);
 
             _db.Remove(place);
 

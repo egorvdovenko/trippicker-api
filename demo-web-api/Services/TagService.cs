@@ -24,10 +24,10 @@ namespace demo_web_api.Services
         {
             var tags = await _db.Tags
                 .AsNoTracking()
-                .Select(c => new TagItem
+                .Select(t => new TagItem
                 {
-                    Id = c.Id,
-                    Name = c.Name
+                    Id = t.Id,
+                    Name = t.Name
                 })
                 .ToPagedListAsync(pageFilter);
 
@@ -37,12 +37,12 @@ namespace demo_web_api.Services
         public Task<List<ListItem<int>>> GetListItems()
         {
             var listItems = _db.Tags
-                .Select(x => new ListItem<int>
+                .Select(t => new ListItem<int>
                 {
-                    Id = x.Id,
-                    Text = x.Name
+                    Id = t.Id,
+                    Text = t.Name
                 })
-                .OrderBy(x => x.Text)
+                .OrderBy(t => t.Text)
                 .ToListAsync();
 
             return listItems;
@@ -51,12 +51,12 @@ namespace demo_web_api.Services
         public async Task<TagModel> Get(int id)
         {
             var tag = await _db.Tags
-                .Select(c => new TagModel
+                .Select(t => new TagModel
                 {
-                    Id = c.Id,
-                    Name = c.Name
+                    Id = t.Id,
+                    Name = t.Name
                 })
-                .FirstAsync(c => c.Id == id);
+                .FirstAsync(t => t.Id == id);
 
             return tag;
         }
@@ -77,7 +77,7 @@ namespace demo_web_api.Services
         public async Task Update(int id, SaveTagRequest request)
         {
             var tag = await _db.Tags
-                .FirstAsync(c => c.Id == id);
+                .FirstAsync(t => t.Id == id);
 
             tag.Name = request.Name;
 
@@ -89,7 +89,7 @@ namespace demo_web_api.Services
         public async Task Delete(int id)
         {
             var tag = await _db.Tags
-                .SingleAsync(x => x.Id == id);
+                .SingleAsync(t => t.Id == id);
 
             _db.Remove(tag);
 
