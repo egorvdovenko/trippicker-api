@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using demo_web_api.Entities;
-using demo_web_api.Entities.Configurations;
-using demo_web_api.Entities.ManyToMany;
+using trippicker_api.Entities;
+using trippicker_api.Entities.Configurations;
+using trippicker_api.Entities.ManyToMany;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace demo_web_api
+namespace trippicker_api
 {
-    public class DemoDbContext : IdentityDbContext<UserEntity, IdentityRole<int>, int>
+    public class TrippickerDbContext : IdentityDbContext<UserEntity, IdentityRole<int>, int>
     {
-        public DemoDbContext(DbContextOptions options) : base(options)
+        public TrippickerDbContext(DbContextOptions options) : base(options)
         {
         }
 

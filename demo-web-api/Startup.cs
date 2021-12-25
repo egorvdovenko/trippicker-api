@@ -1,9 +1,9 @@
-using demo_web_api.Configuration;
-using demo_web_api.Entities;
-using demo_web_api.Interfaces.Repositories;
-using demo_web_api.Interfaces.Services;
-using demo_web_api.Repositories;
-using demo_web_api.Services;
+using trippicker_api.Configuration;
+using trippicker_api.Entities;
+using trippicker_api.Interfaces.Repositories;
+using trippicker_api.Interfaces.Services;
+using trippicker_api.Repositories;
+using trippicker_api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,7 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-namespace demo_web_api
+namespace trippicker_api
 {
     public class Startup
     {
@@ -30,8 +30,8 @@ namespace demo_web_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DemoDbContext>(c =>
-                c.UseSqlServer(Configuration.GetConnectionString("DemoDbContext")));
+            services.AddDbContext<TrippickerDbContext>(c =>
+                c.UseSqlServer(Configuration.GetConnectionString("TrippickerDbContext")));
 
             services.AddScoped<ITagService, TagService>();
             services.AddScoped<IPlaceService, PlaceService>();
@@ -39,8 +39,8 @@ namespace demo_web_api
 
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
-            services.Configure<DemoWebApiConfiguration>(Configuration);
-            var config = Configuration.Get<DemoWebApiConfiguration>();
+            services.Configure<TrippickerApiConfiguration>(Configuration);
+            var config = Configuration.Get<TrippickerApiConfiguration>();
 
             var key = Encoding.ASCII.GetBytes(config.SecurityKey);
             var tokenValidationParameters = new TokenValidationParameters
@@ -59,7 +59,7 @@ namespace demo_web_api
                     opts.Password.RequireDigit = false;
                     opts.Password.RequiredLength = 6;
                 })
-                .AddEntityFrameworkStores<DemoDbContext>()
+                .AddEntityFrameworkStores<TrippickerDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddSingleton(tokenValidationParameters);
@@ -75,7 +75,7 @@ namespace demo_web_api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "demo_web_api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "trippicker_api", Version = "v1" });
             });
         }
 
@@ -86,7 +86,7 @@ namespace demo_web_api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "demo_web_api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "trippicker_api v1"));
             }
 
             app.UseCors(c => c

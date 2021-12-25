@@ -1,7 +1,7 @@
 ﻿using System;
-using demo_web_api.Interfaces;
+using trippicker_api.Interfaces;
 
-namespace demo_web_api.Entities
+namespace trippicker_api.Entities
 {
     public class RefreshTokenEntity : ICreatedUtcDateTimeEntity, IUpdatedUtcDateTimeEntity, IDeletedUtcDateTimeEntity
     {

@@ -5,18 +5,18 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using demo_web_api.Configuration;
-using demo_web_api.Entities;
-using demo_web_api.Enums;
-using demo_web_api.Interfaces.Repositories;
-using demo_web_api.Interfaces.Services;
-using demo_web_api.Models.Account;
+using trippicker_api.Configuration;
+using trippicker_api.Entities;
+using trippicker_api.Enums;
+using trippicker_api.Interfaces.Repositories;
+using trippicker_api.Interfaces.Services;
+using trippicker_api.Models.Account;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace demo_web_api.Services
+namespace trippicker_api.Services
 {
     public class AccountService : IAccountService
     {
@@ -24,14 +24,14 @@ namespace demo_web_api.Services
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly TokenValidationParameters _tokenValidationParameters;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
-        private readonly DemoWebApiConfiguration _config;
+        private readonly TrippickerApiConfiguration _config;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
 
         public AccountService(UserManager<UserEntity> userManager,
             SignInManager<UserEntity> signInManager,
             TokenValidationParameters tokenValidationParameters,
             IRefreshTokenRepository refreshTokenRepository,
-            IOptions<DemoWebApiConfiguration> config,
+            IOptions<TrippickerApiConfiguration> config,
             RoleManager<IdentityRole<int>> roleManager)
         {
             _userManager = userManager;

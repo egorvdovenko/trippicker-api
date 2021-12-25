@@ -1,9 +1,9 @@
-﻿using demo_web_api.Pagination;
+﻿using trippicker_api.Pagination;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace demo_web_api.Extensions
+namespace trippicker_api.Extensions
 {
     public static class QueryableExtensions
     {

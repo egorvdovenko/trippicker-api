@@ -1,6 +1,6 @@
-namespace demo_web_api.Configuration
+namespace trippicker_api.Configuration
 {
-    public class DemoWebApiConfiguration
+    public class TrippickerApiConfiguration
     {
         public string SecurityKey { get; set; }
     }

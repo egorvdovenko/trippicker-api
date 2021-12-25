@@ -1,20 +1,20 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using demo_web_api.Entities;
-using demo_web_api.Entities.ManyToMany;
-using demo_web_api.Extensions;
-using demo_web_api.Interfaces.Services;
-using demo_web_api.Models.Places;
-using demo_web_api.Pagination;
+using trippicker_api.Entities;
+using trippicker_api.Entities.ManyToMany;
+using trippicker_api.Extensions;
+using trippicker_api.Interfaces.Services;
+using trippicker_api.Models.Places;
+using trippicker_api.Pagination;
 using Microsoft.EntityFrameworkCore;
 
-namespace demo_web_api.Services
+namespace trippicker_api.Services
 {
     public class PlaceService : IPlaceService
     {
-        private readonly DemoDbContext _db;
+        private readonly TrippickerDbContext _db;
 
-        public PlaceService(DemoDbContext db)
+        public PlaceService(TrippickerDbContext db)
         {
             _db = db;
         }

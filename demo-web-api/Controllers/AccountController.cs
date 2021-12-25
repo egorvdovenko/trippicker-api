@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using demo_web_api.Extensions;
-using demo_web_api.Models.Account;
+using trippicker_api.Extensions;
+using trippicker_api.Models.Account;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using demo_web_api.Interfaces.Services;
+using trippicker_api.Interfaces.Services;
 
-namespace demo_web_api.Controllers
+namespace trippicker_api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

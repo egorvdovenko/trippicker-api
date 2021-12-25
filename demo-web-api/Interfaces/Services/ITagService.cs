@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using demo_web_api.Models;
-using demo_web_api.Models.Tags;
-using demo_web_api.Pagination;
+using trippicker_api.Models;
+using trippicker_api.Models.Tags;
+using trippicker_api.Pagination;
 
-namespace demo_web_api.Interfaces.Services
+namespace trippicker_api.Interfaces.Services
 {
     public interface ITagService
     {

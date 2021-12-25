@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace demo_web_api
+namespace trippicker_api
 {
     public class Program
     {

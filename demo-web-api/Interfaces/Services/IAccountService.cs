@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using demo_web_api.Entities;
-using demo_web_api.Models.Account;
+using trippicker_api.Entities;
+using trippicker_api.Models.Account;
 
-namespace demo_web_api.Interfaces.Services
+namespace trippicker_api.Interfaces.Services
 {
     public interface IAccountService
     {

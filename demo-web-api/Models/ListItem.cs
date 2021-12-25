@@ -1,4 +1,4 @@
-﻿namespace demo_web_api.Models
+﻿namespace trippicker_api.Models
 {
     public class ListItem<T>
     {

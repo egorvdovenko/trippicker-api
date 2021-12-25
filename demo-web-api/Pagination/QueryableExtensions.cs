@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace demo_web_api.Pagination
+namespace trippicker_api.Pagination
 {
     public static class QueryableExtensions
     {

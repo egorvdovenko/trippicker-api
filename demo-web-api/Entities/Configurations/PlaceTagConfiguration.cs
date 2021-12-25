@@ -1,8 +1,8 @@
-﻿using demo_web_api.Entities.ManyToMany;
+﻿using trippicker_api.Entities.ManyToMany;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace demo_web_api.Entities.Configurations
+namespace trippicker_api.Entities.Configurations
 {
     public class PlaceTagConfiguration : IEntityTypeConfiguration<PlaceTagEntity>
     {

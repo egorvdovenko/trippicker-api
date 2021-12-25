@@ -1,7 +1,7 @@
-﻿using demo_web_api.Entities.ManyToMany;
+﻿using trippicker_api.Entities.ManyToMany;
 using System.Collections.Generic;
 
-namespace demo_web_api.Entities
+namespace trippicker_api.Entities
 {
     public class PlaceEntity
     {

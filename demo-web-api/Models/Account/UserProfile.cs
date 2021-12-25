@@ -1,6 +1,6 @@
-﻿using demo_web_api.Entities;
+﻿using trippicker_api.Entities;
 
-namespace demo_web_api.Models.Account
+namespace trippicker_api.Models.Account
 {
     public class UserProfile
     {

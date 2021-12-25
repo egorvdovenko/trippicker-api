@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace demo_web_api.Models.Places
+namespace trippicker_api.Models.Places
 {
     public class PlaceModel
     {

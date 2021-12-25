@@ -1,4 +1,4 @@
-﻿namespace demo_web_api.Pagination
+﻿namespace trippicker_api.Pagination
 {
     public class PageFilter
     {

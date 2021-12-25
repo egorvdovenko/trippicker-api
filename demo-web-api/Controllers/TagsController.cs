@@ -1,7 +1,7 @@
-﻿using demo_web_api.Interfaces.Services;
-using demo_web_api.Models;
-using demo_web_api.Models.Tags;
-using demo_web_api.Pagination;
+﻿using trippicker_api.Interfaces.Services;
+using trippicker_api.Models;
+using trippicker_api.Models.Tags;
+using trippicker_api.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

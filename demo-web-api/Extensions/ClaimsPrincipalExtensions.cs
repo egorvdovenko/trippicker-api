@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Claims;
-using demo_web_api.Enums;
+using trippicker_api.Enums;
 
-namespace demo_web_api.Extensions
+namespace trippicker_api.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace demo_web_api.Models.Account
+namespace trippicker_api.Models.Account
 {
     public class RefreshTokenRequest
     {

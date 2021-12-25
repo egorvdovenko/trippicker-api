@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using demo_web_api.Models.Places;
-using demo_web_api.Pagination;
+using trippicker_api.Models.Places;
+using trippicker_api.Pagination;
 
-namespace demo_web_api.Interfaces.Services
+namespace trippicker_api.Interfaces.Services
 {
     public interface IPlaceService
     {

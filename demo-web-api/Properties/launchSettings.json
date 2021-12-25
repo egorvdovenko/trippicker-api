@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "demo_web_api": {
+    "trippicker_api": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

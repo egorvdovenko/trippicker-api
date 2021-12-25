@@ -1,4 +1,4 @@
-﻿namespace demo_web_api.Entities.ManyToMany
+﻿namespace trippicker_api.Entities.ManyToMany
 {
     public class PlaceTagEntity
     {

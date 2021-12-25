@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using demo_web_api.Interfaces;
+using trippicker_api.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace demo_web_api.Entities
+namespace trippicker_api.Entities
 {
     public class UserEntity : IdentityUser<int>, ICreatedUtcDateTimeEntity, IUpdatedUtcDateTimeEntity, IDeletedUtcDateTimeEntity
     {

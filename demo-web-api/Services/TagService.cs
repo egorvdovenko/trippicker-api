@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using demo_web_api.Entities;
-using demo_web_api.Extensions;
-using demo_web_api.Interfaces.Services;
-using demo_web_api.Models;
-using demo_web_api.Models.Tags;
-using demo_web_api.Pagination;
+using trippicker_api.Entities;
+using trippicker_api.Extensions;
+using trippicker_api.Interfaces.Services;
+using trippicker_api.Models;
+using trippicker_api.Models.Tags;
+using trippicker_api.Pagination;
 using Microsoft.EntityFrameworkCore;
 
-namespace demo_web_api.Services
+namespace trippicker_api.Services
 {
     public class TagService : ITagService
     {
-        private readonly DemoDbContext _db;
+        private readonly TrippickerDbContext _db;
 
-        public TagService(DemoDbContext db)
+        public TagService(TrippickerDbContext db)
         {
             _db = db;
         }

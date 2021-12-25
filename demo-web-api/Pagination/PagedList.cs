@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace demo_web_api.Pagination
+namespace trippicker_api.Pagination
 {
     public class PagedList<T>
     {

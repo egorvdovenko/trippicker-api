@@ -1,6 +1,6 @@
-﻿using demo_web_api.Interfaces.Services;
-using demo_web_api.Models.Places;
-using demo_web_api.Pagination;
+﻿using trippicker_api.Interfaces.Services;
+using trippicker_api.Models.Places;
+using trippicker_api.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

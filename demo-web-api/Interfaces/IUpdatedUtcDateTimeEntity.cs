@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace demo_web_api.Interfaces
+namespace trippicker_api.Interfaces
 {
     public interface IUpdatedUtcDateTimeEntity
     {

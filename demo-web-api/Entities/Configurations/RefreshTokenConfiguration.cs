@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace demo_web_api.Entities.Configurations
+namespace trippicker_api.Entities.Configurations
 {
     public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshTokenEntity>
     {

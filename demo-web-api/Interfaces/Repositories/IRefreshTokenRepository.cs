@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using demo_web_api.Entities;
+using trippicker_api.Entities;
 
-namespace demo_web_api.Interfaces.Repositories
+namespace trippicker_api.Interfaces.Repositories
 {
     public interface IRefreshTokenRepository
     {

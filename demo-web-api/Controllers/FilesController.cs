@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace demo_web_api.Controllers
+namespace trippicker_api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

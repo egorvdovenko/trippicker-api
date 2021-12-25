@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using demo_web_api.Entities;
-using demo_web_api.Interfaces.Repositories;
+using trippicker_api.Entities;
+using trippicker_api.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace demo_web_api.Repositories
+namespace trippicker_api.Repositories
 {
     public class RefreshTokenRepository : IRefreshTokenRepository
     {
-        private readonly DemoDbContext _db;
+        private readonly TrippickerDbContext _db;
 
-        public RefreshTokenRepository(DemoDbContext db)
+        public RefreshTokenRepository(TrippickerDbContext db)
         {
             _db = db;
         }
