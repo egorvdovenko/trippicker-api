@@ -71,6 +71,7 @@ namespace demo_web_api
                     x.TokenValidationParameters = tokenValidationParameters;
                 });
 
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -87,6 +88,12 @@ namespace demo_web_api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "demo_web_api v1"));
             }
+
+            app.UseCors(c => c
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+            );
 
             app.UseHttpsRedirection();
             app.UseRouting();
