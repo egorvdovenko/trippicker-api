@@ -41,6 +41,8 @@ namespace trippicker_api.Services
                     Id = p.Id,
                     Name = p.Name,
                     Description = p.Description,
+                    Latitude = p.Latitude,
+                    Longitude = p.Longitude,
                     TagsIds = p.PlaceTags
                         .Where(pt => pt.PlaceId == p.Id)
                         .Select(pt => pt.TagId)
@@ -57,6 +59,8 @@ namespace trippicker_api.Services
             {
                 Name = request.Name,
                 Description = request.Description,
+                Latitude = request.Latitude,
+                Longitude = request.Longitude,
                 PlaceTags = request.TagsIds
                     .Select(tid => new PlaceTagEntity
 				    {
@@ -81,6 +85,8 @@ namespace trippicker_api.Services
 
             place.Name = request.Name;
             place.Description = request.Description;
+            place.Latitude = request.Latitude;
+            place.Longitude = request.Longitude;
             place.PlaceTags = request.TagsIds
                 .Select(tid => new PlaceTagEntity
                 {

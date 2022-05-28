@@ -9,6 +9,8 @@ namespace trippicker_api.Entities.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired();
+            builder.Property(x => x.Latitude).IsRequired();
+            builder.Property(x => x.Longitude).IsRequired();
             builder.Property(x => x.Description).IsRequired();
         }
     }
