@@ -3,6 +3,7 @@ using trippicker_api.Models.Places;
 using trippicker_api.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Invest.Admin.Api.Controllers
 {
@@ -19,6 +20,15 @@ namespace Invest.Admin.Api.Controllers
 
         [HttpGet]
         [Route("")]
+        public async Task<List<PlaceModel>> GetAll()
+        {
+            var places = await _PlaceService.GetAll();
+
+            return places;
+        }
+
+        [HttpGet]
+        [Route("list")]
         public async Task<PagedList<PlaceItem>> GetList([FromQuery] PageFilter request)
         {
             var places = await _PlaceService.GetList(request);

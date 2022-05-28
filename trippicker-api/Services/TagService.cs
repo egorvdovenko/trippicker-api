@@ -20,6 +20,20 @@ namespace trippicker_api.Services
             _db = db;
         }
 
+        public async Task<List<TagModel>> GetAll()
+        {
+            var tags = await _db.Tags
+                .AsNoTracking()
+                .Select(t => new TagModel
+                {
+                    Id = t.Id,
+                    Name = t.Name
+                })
+                .ToListAsync();
+
+            return tags;
+        }
+
         public async Task<PagedList<TagItem>> GetList(PageFilter pageFilter)
         {
             var tags = await _db.Tags

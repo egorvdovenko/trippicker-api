@@ -7,6 +7,7 @@ using trippicker_api.Interfaces.Services;
 using trippicker_api.Models.Places;
 using trippicker_api.Pagination;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace trippicker_api.Services
 {
@@ -17,6 +18,27 @@ namespace trippicker_api.Services
         public PlaceService(TrippickerDbContext db)
         {
             _db = db;
+        }
+
+        public async Task<List<PlaceModel>> GetAll()
+        {
+            var places = await _db.Places
+                .AsNoTracking()
+                .Select(p => new PlaceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Latitude = p.Latitude,
+                    Longitude = p.Longitude,
+                    TagsIds = p.PlaceTags
+                        .Where(pt => pt.PlaceId == p.Id)
+                        .Select(pt => pt.TagId)
+                        .ToList()
+                })
+                .ToListAsync();
+
+            return places;
         }
 
         public async Task<PagedList<PlaceItem>> GetList(PageFilter pageFilter)

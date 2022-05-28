@@ -21,6 +21,15 @@ namespace Invest.Admin.Api.Controllers
 
         [HttpGet]
         [Route("")]
+        public async Task<List<TagModel>> GetAll()
+        {
+            var tags = await _tagService.GetAll();
+
+            return tags;
+        }
+
+        [HttpGet]
+        [Route("list")]
         public async Task<PagedList<TagItem>> GetList([FromQuery] PageFilter request)
         {
             var tags = await _tagService.GetList(request);
