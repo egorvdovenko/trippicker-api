@@ -20,9 +20,9 @@ namespace Invest.Admin.Api.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<List<PlaceModel>> GetAll()
+        public async Task<List<PlaceModel>> GetAll([FromQuery] List<int> tagsIds)
         {
-            var places = await _PlaceService.GetAll();
+            var places = await _PlaceService.GetAll(tagsIds);
 
             return places;
         }

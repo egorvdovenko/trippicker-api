@@ -7,7 +7,7 @@ namespace trippicker_api.Interfaces.Services
 {
     public interface IPlaceService
     {
-        Task<List<PlaceModel>> GetAll();
+        Task<List<PlaceModel>> GetAll(List<int> tagsIds);
         Task<PagedList<PlaceItem>> GetList(PageFilter request);
         Task<PlaceModel> Get(int PlaceId);
         public Task<int> Create(SavePlaceRequest request);

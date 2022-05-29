@@ -20,25 +20,31 @@ namespace trippicker_api.Services
             _db = db;
         }
 
-        public async Task<List<PlaceModel>> GetAll()
+        public async Task<List<PlaceModel>> GetAll(List<int> tagsIds)
         {
-            var places = await _db.Places
-                .AsNoTracking()
-                .Select(p => new PlaceModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Description = p.Description,
-                    Latitude = p.Latitude,
-                    Longitude = p.Longitude,
-                    TagsIds = p.PlaceTags
-                        .Where(pt => pt.PlaceId == p.Id)
-                        .Select(pt => pt.TagId)
-                        .ToList()
-                })
-                .ToListAsync();
+            var query = _db.Places.AsNoTracking();
 
-            return places;
+            if (tagsIds.Any())
+			{
+                query = query.Where(t => tagsIds.Contains(t.Id));
+            }
+
+			var places = await query
+				.Select(p => new PlaceModel
+				{
+					Id = p.Id,
+					Name = p.Name,
+					Description = p.Description,
+					Latitude = p.Latitude,
+					Longitude = p.Longitude,
+					TagsIds = p.PlaceTags
+						.Where(pt => pt.PlaceId == p.Id)
+						.Select(pt => pt.TagId)
+						.ToList()
+				})
+				.ToListAsync();
+
+			return places;
         }
 
         public async Task<PagedList<PlaceItem>> GetList(PageFilter pageFilter)
