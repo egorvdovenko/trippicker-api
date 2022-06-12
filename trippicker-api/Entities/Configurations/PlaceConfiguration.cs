@@ -12,6 +12,7 @@ namespace trippicker_api.Entities.Configurations
             builder.Property(x => x.Latitude).IsRequired();
             builder.Property(x => x.Longitude).IsRequired();
             builder.Property(x => x.Description).IsRequired();
+            builder.HasMany(x => x.Images);
         }
     }
 }

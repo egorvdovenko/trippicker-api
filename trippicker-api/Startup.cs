@@ -36,7 +36,7 @@ namespace trippicker_api
             services.AddScoped<ITagService, TagService>();
             services.AddScoped<IPlaceService, PlaceService>();
             services.AddScoped<IAccountService, AccountService>();
-
+            services.AddScoped<IFileService, FileService>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
             services.Configure<TrippickerApiConfiguration>(Configuration);

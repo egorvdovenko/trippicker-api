@@ -13,6 +13,7 @@ namespace trippicker_api
         {
         }
 
+        public DbSet<FileEntity> Files { get; set; }
         public DbSet<TagEntity> Tags { get; set; }
         public DbSet<PlaceEntity> Places { get; set; }
         public DbSet<PlaceTagEntity> PlaceTags { get; set; }
@@ -20,6 +21,7 @@ namespace trippicker_api
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new FileConfiguration());
             builder.ApplyConfiguration(new PlaceConfiguration());
             builder.ApplyConfiguration(new TagConfiguration());
             builder.ApplyConfiguration(new PlaceTagConfiguration());

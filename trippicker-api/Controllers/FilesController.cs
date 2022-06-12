@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
+using trippicker_api.Interfaces.Services;
+using trippicker_api.Models.Files;
 
 namespace trippicker_api.Controllers
 {
@@ -10,27 +10,20 @@ namespace trippicker_api.Controllers
     [Route("api/[controller]")]
     public class FilesController : ControllerBase
     {
-        private IWebHostEnvironment _hostingEnvironment;
+        private readonly IFileService _fileService;
 
-        public FilesController(IWebHostEnvironment environment)
+        public FilesController(IFileService FileService)
         {
-            _hostingEnvironment = environment;
+            _fileService = FileService;
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> UploadFile(IFormFile file)
+        public async Task<FileItem> Upload(IFormFile file)
         {
-            string uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            var fileItem = await _fileService.Upload(file);
 
-            if (file.Length > 0)
-            {
-                string filePath = Path.Combine(uploads, file.FileName);
-				using Stream fileStream = new FileStream(filePath, FileMode.Create);
-				await file.CopyToAsync(fileStream);
-			}
-
-            return Ok();
+            return fileItem;
         }
     }
 }

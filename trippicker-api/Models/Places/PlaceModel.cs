@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using trippicker_api.Models.Files;
 
 namespace trippicker_api.Models.Places
 {
@@ -10,5 +11,6 @@ namespace trippicker_api.Models.Places
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public List<int> TagsIds { get; set; }
+        public List<FileItem> Images { get; set; }
     }
 }

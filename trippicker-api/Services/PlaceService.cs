@@ -8,6 +8,7 @@ using trippicker_api.Models.Places;
 using trippicker_api.Pagination;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using trippicker_api.Models.Files;
 
 namespace trippicker_api.Services
 {
@@ -40,7 +41,14 @@ namespace trippicker_api.Services
 					TagsIds = p.PlaceTags
 						.Where(pt => pt.PlaceId == p.Id)
 						.Select(pt => pt.TagId)
-						.ToList()
+						.ToList(),
+                    Images = p.Images
+                        .Select(i => new FileItem { 
+                            Id = i.Id, 
+                            Name = i.Name, 
+                            Url = i.Url 
+                        })
+                        .ToList()
 				})
 				.ToListAsync();
 
@@ -74,6 +82,13 @@ namespace trippicker_api.Services
                     TagsIds = p.PlaceTags
                         .Where(pt => pt.PlaceId == p.Id)
                         .Select(pt => pt.TagId)
+                        .ToList(),
+                    Images = p.Images
+                        .Select(i => new FileItem { 
+                            Id = i.Id, 
+                            Name = i.Name, 
+                            Url = i.Url 
+                        })
                         .ToList()
                 })
                 .FirstAsync(p => p.Id == id);
@@ -94,6 +109,13 @@ namespace trippicker_api.Services
 				    {
                         TagId = tid
 				    })
+                    .ToList(),
+                Images = request.Images
+                    .Select(i => new FileEntity {
+                        Id = i.Id,
+                        Name = i.Name,
+                        Url = i.Url
+                    })
                     .ToList()
             };
 
@@ -120,6 +142,14 @@ namespace trippicker_api.Services
                 {
                     PlaceId = id,
                     TagId = tid
+                })
+                .ToList();
+            place.Images = request.Images
+                .Select(i => new FileEntity
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Url = i.Url
                 })
                 .ToList();
 

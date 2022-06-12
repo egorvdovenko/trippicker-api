@@ -11,5 +11,6 @@ namespace trippicker_api.Entities
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public List<PlaceTagEntity> PlaceTags { get; set; }
-	}
+        public List<FileEntity> Images { get; set; }
+    }
 }
