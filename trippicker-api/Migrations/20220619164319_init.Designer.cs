@@ -10,8 +10,8 @@ using trippicker_api;
 namespace trippicker_api.Migrations
 {
     [DbContext(typeof(TrippickerDbContext))]
-    [Migration("20220528060705_Init")]
-    partial class Init
+    [Migration("20220619164319_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -149,6 +149,29 @@ namespace trippicker_api.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("trippicker_api.Entities.FileEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PlaceEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlaceEntityId");
+
+                    b.ToTable("Files");
                 });
 
             modelBuilder.Entity("trippicker_api.Entities.ManyToMany.PlaceTagEntity", b =>
@@ -372,6 +395,13 @@ namespace trippicker_api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("trippicker_api.Entities.FileEntity", b =>
+                {
+                    b.HasOne("trippicker_api.Entities.PlaceEntity", null)
+                        .WithMany("Images")
+                        .HasForeignKey("PlaceEntityId");
+                });
+
             modelBuilder.Entity("trippicker_api.Entities.ManyToMany.PlaceTagEntity", b =>
                 {
                     b.HasOne("trippicker_api.Entities.PlaceEntity", "Place")
@@ -404,6 +434,8 @@ namespace trippicker_api.Migrations
 
             modelBuilder.Entity("trippicker_api.Entities.PlaceEntity", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("PlaceTags");
                 });
 
