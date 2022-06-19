@@ -128,9 +128,11 @@ namespace trippicker_api.Services
         public async Task Update(int id, SavePlaceRequest request)
         {
             var place = await _db.Places
+                .Include(p => p.Images)
                 .Include(p => p.PlaceTags)
                 .FirstAsync(p => p.Id == id);
 
+            _db.RemoveRange(place.Images);
             _db.RemoveRange(place.PlaceTags);
 
             place.Name = request.Name;
