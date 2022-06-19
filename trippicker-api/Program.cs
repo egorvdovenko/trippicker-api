@@ -15,7 +15,7 @@ namespace trippicker_api
         {
             var host = CreateHostBuilder(args).Build();
 
-            ApplicationDbInit.Seed(host.Services);
+            TrippickerDbInit.Seed(host.Services);
 
             host.Run();
         }
