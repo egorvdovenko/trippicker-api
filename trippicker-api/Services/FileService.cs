@@ -34,9 +34,10 @@ namespace trippicker_api.Services
 
             var result = await _cloudinary.UploadAsync(uploadParams);
 
+
 			return new FileItem
 			{
-				Id = result.AssetId,
+                Id = result.PublicId,
                 Name = result.OriginalFilename,
 				Url = result.Url
 			};
